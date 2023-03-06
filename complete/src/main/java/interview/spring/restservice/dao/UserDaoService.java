@@ -12,7 +12,7 @@ import java.util.*;
 
 @Component
 public class UserDaoService {
-    private static List<User> usersList = new ArrayList<>();
+    private static List<User> usersList = new ArrayList<User>();
     static{
         usersList.add(new User(UUID. randomUUID(), "Adam", LocalDateTime.now().minusYears(30)));
         usersList.add(new User(UUID. randomUUID(), "John", LocalDateTime.now().minusYears(25)));
@@ -47,7 +47,7 @@ public class UserDaoService {
             User userToBeUpdated =  findUserById(user.getId());
             Integer userIndex = findUserIndex(userToBeUpdated.getId());
             if(userIndex != -1){
-                usersList.set(userIndex, userToBeUpdated);
+                usersList.set(userIndex, user);
             }else{
                 throw new ErrorResponseException(HttpStatus.BAD_REQUEST);
             }
@@ -69,7 +69,8 @@ public class UserDaoService {
             if (Objects.isNull(userObj)) {
                 return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
             } else {
-                saveOrUpdateUser(userObj);
+                user.setId(id);
+                saveOrUpdateUser(user);
                 return new ResponseEntity<>(usersList.get(findUserIndex(id)), HttpStatus.OK);
             }
         } catch (Exception e) {
