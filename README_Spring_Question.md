@@ -1,8 +1,8 @@
 # SpringBootInterview2
 
-# 1. Implement delete endpoint
-# 2. We have got a new requirement that user should have city as well. But it is not a mandatory field and APIs should be backward compatible.
-# 3. While creating a new user, I want "name" to be a mandatory parameter. If it is not passed, it should throw Bad_request error. How can we do changes in existing API version? If we want to make a new API version so that old api consumers are not impacted, how would we implement it?
+## 1. Implement delete endpoint
+## 2. We have got a new requirement that user should have city as well. But it is not a mandatory field and APIs should be backward compatible.
+## 3. While creating a new user, I want "name" to be a mandatory parameter. If it is not passed, it should throw Bad_request error. How can we do changes in existing API version? If we want to make a new API version so that old api consumers are not impacted, how would we implement it?
 
 
 ## Endpoint Supported by Project
