@@ -28,3 +28,19 @@ Updates partial user using Patch for the user Id passed in Path Variable
 {  
 "name": "Timothy"  
 }  
+
+
+## How to access H2 database
+
+open the link in browser http://localhost:8080/h2-console.
+
+Enter the credentials
+
+    url: jdbc:h2:mem:mydb
+    username: sa
+    password: password
+
+
+### Swagger
+
+http://localhost:8080/swagger-ui/index.html#/

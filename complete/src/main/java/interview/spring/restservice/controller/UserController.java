@@ -1,39 +1,50 @@
 package interview.spring.restservice.controller;
 
-import interview.spring.restservice.dao.UserDaoService;
-import interview.spring.restservice.model.User;
+import interview.spring.restservice.entity.User;
+import interview.spring.restservice.model.UserDto;
+import interview.spring.restservice.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
+
+    private UserService userService;
+    private ModelMapper modelMapper;
+
     @Autowired
-    UserDaoService userDaoService;
-    UserController(UserDaoService service){
-        userDaoService = service;
+    public UserController(final UserService userService) {
+        this.userService = userService;
+        modelMapper = new ModelMapper();
     }
+
     @GetMapping()
-    public List<User> getUsers(){
-        return userDaoService.getAllUsers();
+    public List<User> getUsers() {
+        return userService.getAllUsers();
     }
+
     @PostMapping()
-    public User createUser(@RequestBody User user){
-        userDaoService.createUser(user);
-        return user;
+    public User createUser(@RequestBody UserDto user) {
+        return userService.createUser(modelMapper.map(user, User.class));
     }
+
     @PutMapping("/{id}")
-    public ResponseEntity updateExistingUser(@PathVariable UUID id, @RequestBody User user){
-        return userDaoService.updateFullUser(id, user);
+    public ResponseEntity updateExistingUser(@RequestBody UserDto user) {
+        userService.updateUser(modelMapper.map(user, User.class));
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
     @PatchMapping("/{id}")
-    public ResponseEntity updateUser(@PathVariable UUID id, @RequestBody Map<Object, Object> patchFields){
-        return userDaoService.updatePartialUser(id, patchFields);
+    public ResponseEntity updateUser(@RequestBody UserDto user) {
+
+        userService.updateUser(modelMapper.map(user, User.class));
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
 
 }

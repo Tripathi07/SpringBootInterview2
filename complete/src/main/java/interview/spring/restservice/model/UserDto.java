@@ -3,15 +3,14 @@ package interview.spring.restservice.model;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class User {
-    private UUID id;
+public class UserDto {
+    private int id;
     private String name;
     private LocalDateTime birthDate;
 }
