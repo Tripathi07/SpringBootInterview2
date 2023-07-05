@@ -1,6 +1,6 @@
 # SpringBootInterview2
 
-##Task
+## Task
 1. Implement delete endpoint
 2. We have got a new requirement that user should have city as well. But it is not a mandatory field .
 3. While creating a new user, I want "name" to be a mandatory parameter. If it is not passed, it should throw Bad_request error.
