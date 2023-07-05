@@ -5,7 +5,9 @@ Exmaple
 ```
 Input : {"You" ,"Are", "WelcOMe", "to", "Cuba", "ProgrAMMing","SpACE"} 
 
-# Input String could be a combination of lowercase and upper case but Output should be in Camel casing only
+Output : "You Are Welcome To Cuba Programming Space"
+```
+### Input String could be a combination of lowercase and upper case but Output should be in Camel casing only
 
 
 
